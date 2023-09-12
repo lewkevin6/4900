@@ -8,4 +8,3 @@ print(original_data.info())
 new_data = original_data.dropna()
 
 new_data.info()
-
