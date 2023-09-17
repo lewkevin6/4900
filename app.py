@@ -2,7 +2,6 @@ import streamlit as st
 import joblib
 import pandas as pd
 
-
 #Loads the desired model in for the app to use
 def load_model():
     return joblib.load('model_for_app.pkl')
@@ -28,4 +27,3 @@ st.radio('Gender', ['Male', 'Female'])
 
 
 st.write(data)
-
