@@ -10,14 +10,13 @@ def load_model():
 
 def predict(gender, age, hypertension, heart_diease, married, work_type, residence_type, avg_glucose_level, bmi, smoking_status):
     if(age < 0):
-    st.error("Age is below 0, please enter a valid age")
+        st.error("Age is below 0, please enter a valid age")
 
     if(avg_glucose_level < 0):
-    st.error("Your average glucose level is below 0, please enter a valid average glucose level")
+        st.error("Your average glucose level is below 0, please enter a valid average glucose level")
 
     if(bmi < 0):
-    st.error("Your bmi is below 0, please enter a valid bmi")
-
+        st.error("Your bmi is below 0, please enter a valid bmi")
 
 gender = st.radio('Gender', ['Male', 'Female'])
 age = st.number_input("Enter your age:")
@@ -31,5 +30,5 @@ bmi = st.number_input("Enter your BMI: ")
 smoking_status = st.radio('Smoking status', ['Never smoked', 'Unknown', 'Formerly smoked', 'Smokes'])
 
 
-st.button("Submit", on_press = predict(gender, age, hypertension, heart_diease, married, work_type, residence_type, avg_glucose_level, bmi, smoking_status))
+st.button("Submit", on_press = predict(gender, age, hypertension, heart_disease, married, work_type, residence_type, avg_glucose_level, bmi, smoking_status))
 
