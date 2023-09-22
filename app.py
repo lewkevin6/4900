@@ -1,6 +1,7 @@
 import streamlit as st
 import joblib
 
+#streamlit run /workspaces/4900/app.py 
 st.title("Make a prediction")
 
 #Loads the desired model in for the app to use
@@ -24,15 +25,19 @@ smoking_status = st.radio('Smoking status', ['Never smoked', 'Unknown', 'Formerl
 def predict(gender, age, hypertension, heart_disease, married, work_type, residence_type, avg_glucose_level, bmi, smoking_status):
     
     model = load_model()
+    flag = True
 
-    if(age < 0):
+    if(age <= 0):
         st.error("Age is below 0, please enter a valid age")
+        flag = False
 
-    if(avg_glucose_level < 0):
+    if(avg_glucose_level <= 0):
         st.error("Your average glucose level is below 0, please enter a valid average glucose level")
+        flag = False
 
-    if(bmi < 0):
+    if(bmi <= 0):
         st.error("Your bmi is below 0, please enter a valid bmi")
+        flag = False
 
     if(gender == "Male"):
         converted_gender = 1
@@ -81,11 +86,12 @@ def predict(gender, age, hypertension, heart_disease, married, work_type, reside
 
     prediction = model.predict([[converted_gender,age,converted_hypertension,converted_heart_disease,converted_married,converted_work_type,converted_residence_type,avg_glucose_level, bmi, converted_smoking_status]])
     
-    if(prediction == 0):
-        st.success("No Stroke")
-    elif(prediction == 1):
-        st.warning("Stroke")
+    if(flag == True):
+        if(prediction == 0):
+            st.success("No Stroke")
+        elif(prediction == 1):
+            st.warning("Stroke")
 
-
-st.button("Submit", on_click = predict(gender,age,hypertension,heart_disease,married,work_type,residence_type,avg_glucose_level, bmi, smoking_status))
-
+#Submit button
+if st.button('Submit'):
+    st.write(predict(gender,age,hypertension,heart_disease,married,work_type,residence_type,avg_glucose_level, bmi, smoking_status))
