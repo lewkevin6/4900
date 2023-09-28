@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 
 #streamlit run /workspaces/4900/app.py 
-st.title("Make a prediction")
+st.title("Stroke Predictor")
 
 #Loads the desired model in for the app to use
 def load_model():
