@@ -6,7 +6,7 @@ st.title("Stroke Predictor")
 
 #Loads the desired model in for the app to use
 def load_model():
-    return joblib.load('model_for_app.pkl')
+    return joblib.load('/workspaces/4900/data_cleaning_1/model_for_app_1.pkl')
 
 
 gender = st.radio('Gender', ['Male', 'Female'])
