@@ -16,7 +16,7 @@ age = st.number_input("Enter your age:")
 hypertension = st.radio('Hypertension (high blood pressure)', ['Yes', 'No'])
 heart_disease = st.radio('History of heart disease?', ['Yes', 'No'])
 married = st.radio('Married?', ['Yes', 'No'])
-work_type = st.radio('Work type', ['Private', 'Self-Employed', 'Parent', 'Government Job', 'Never worked'])
+work_type = st.radio('Work type', ['Private', 'Self-Employed', 'Government Job', 'Never worked'])
 residence_type = st.radio('Residence type', ['Urban', 'Rural'])
 avg_glucose_level = st.number_input("Enter your average glucose level:")
 bmi = st.number_input("Enter your BMI: ")
@@ -69,8 +69,6 @@ def predict(gender, age, hypertension, heart_disease, married, work_type, reside
     if(work_type == "Never worked"):
         work_type = "Never_worked"
 
-    if(work_type == "Parent"):
-        work_type = 'children'
 
     data = {
         "gender": [gender],
