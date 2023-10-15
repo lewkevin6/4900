@@ -9,7 +9,7 @@ st.title("Stroke Predictor")
 
 #Loads the desired model/pipeline in for the app to use
 def load_pipeline():
-    return joblib.load('/workspaces/4900/pipeline_for_app_3.pkl')
+    return joblib.load('/workspaces/4900/data_cleaning_3/pipeline_for_app_3.pkl')
 
 gender = st.radio('Gender', ['Male', 'Female'])
 age = st.number_input("Enter your age:")
