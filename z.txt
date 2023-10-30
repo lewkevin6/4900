@@ -1,0 +1,17 @@
+Look at stratify to set data balance before smotenc
+
+Look into different hyper parameters of specific models, start with examples from class
+
+
+(Done using a SVC)
+Before stratify
+
+{'classifier': SVC(random_state=1), 'smotenc__sampling_strategy': 1}
+
+0.31450719822812845
+
+After stratify
+
+{'classifier': SVC(random_state=1), 'smotenc__sampling_strategy': 1}
+
+0.34366925064599485
