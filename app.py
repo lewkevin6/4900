@@ -4,25 +4,16 @@ import pandas as pd
 import numpy as np
 
 
-#Use this in terminal after running: streamlit run /workspaces/4900/app.py 
+#Use this in terminal after running: python -m streamlit run c:/Users/lewke/Desktop/4900/app.py
 st.title("Stroke Predictor")
 
 #Loads the desired model/pipeline in for the app to use
 def load_pipeline():
-    return joblib.load('/workspaces/4900/data_cleaning_3/pipeline_for_app_3.pkl')
+    return joblib.load('data_cleaning_3\pipeline_for_app_3.pkl')
 
-gender = st.radio('Gender', ['Male', 'Female'])
-age = st.number_input("Enter your age:")
-hypertension = st.radio('Hypertension (high blood pressure)', ['Yes', 'No'])
-heart_disease = st.radio('History of heart disease?', ['Yes', 'No'])
-married = st.radio('Married?', ['Yes', 'No'])
-work_type = st.radio('Work type', ['Private', 'Self-Employed', 'Government Job', 'Never worked'])
-residence_type = st.radio('Residence type', ['Urban', 'Rural'])
-avg_glucose_level = st.number_input("Enter your average glucose level:")
-bmi = st.number_input("Enter your BMI: ")
-smoking_status = st.radio('Smoking status', ['Never smoked', 'Unknown', 'Formerly smoked', 'Smokes'])
+def convert_prob(predictions, threshold = 0.5):
+    return (predictions >= threshold).astype(int)[:,1]
 
-features = ['gender', 'age', 'hypertension', 'heart_disease', 'ever_married', 'work_type', 'Residence_type', 'avg_glucose_level', "bmi", "smoking_status"]
 def predict(gender, age, hypertension, heart_disease, married, work_type, residence_type, avg_glucose_level, bmi, smoking_status):
     
     pipeline = load_pipeline()
@@ -92,6 +83,25 @@ def predict(gender, age, hypertension, heart_disease, married, work_type, reside
             st.success("No Stroke")
         elif(prediction == 1):
             st.warning("Stroke")
+
+
+
+
+            
+
+gender = st.radio('Gender', ['Male', 'Female'])
+age = st.number_input("Enter your age:")
+hypertension = st.radio('Hypertension (high blood pressure)', ['Yes', 'No'])
+heart_disease = st.radio('History of heart disease?', ['Yes', 'No'])
+married = st.radio('Married?', ['Yes', 'No'])
+work_type = st.radio('Work type', ['Private', 'Self-Employed', 'Government Job', 'Never worked'])
+residence_type = st.radio('Residence type', ['Urban', 'Rural'])
+avg_glucose_level = st.number_input("Enter your average glucose level:")
+bmi = st.number_input("Enter your BMI: ")
+smoking_status = st.radio('Smoking status', ['Never smoked', 'Unknown', 'Formerly smoked', 'Smokes'])
+
+features = ['gender', 'age', 'hypertension', 'heart_disease', 'ever_married', 'work_type', 'Residence_type', 'avg_glucose_level', "bmi", "smoking_status"]
+
 
 #Submit button
 if st.button('Submit'):
