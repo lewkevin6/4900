@@ -3,16 +3,10 @@ import joblib
 import pandas as pd
 import numpy as np
 
-
-#Use this in terminal after running: python -m streamlit run c:/Users/lewke/Desktop/4900/app.py
-st.title("Stroke Predictor")
-
 #Loads the desired model/pipeline in for the app to use
 def load_pipeline():
-    return joblib.load('data_cleaning_3\pipeline_for_app_3.pkl')
+    return joblib.load('version_4/app_probability_pipeline.pkl')
 
-def convert_prob(predictions, threshold = 0.5):
-    return (predictions >= threshold).astype(int)[:,1]
 
 def predict(gender, age, hypertension, heart_disease, married, work_type, residence_type, avg_glucose_level, bmi, smoking_status):
     
@@ -61,7 +55,7 @@ def predict(gender, age, hypertension, heart_disease, married, work_type, reside
         work_type = "Never_worked"
 
 
-    data = {
+    user_input = {
         "gender": [gender],
         "age": [age],
         "hypertension": [hypertension],
@@ -72,23 +66,21 @@ def predict(gender, age, hypertension, heart_disease, married, work_type, reside
         "avg_glucose_level": [avg_glucose_level],
         "bmi": [bmi],
         "smoking_status": [smoking_status],
-            }
+    }
 
-    pred = pd.DataFrame(data)
+    user_input = pd.DataFrame(user_input)
 
-    prediction = pipeline.predict(pred)
-    
+    prediction = pipeline.predict_proba(user_input).any()
+
     if(flag is True):
-        if(prediction == 0):
+        if(prediction >= 0.7):
             st.success("No Stroke")
-        elif(prediction == 1):
+        elif(prediction < 0.7):
             st.warning("Stroke")
 
 
-
-
-            
-
+#Use this in terminal after running: python -m streamlit run c:/Users/lewke/Desktop/4900/app.py
+st.title("Stroke Predictor")
 gender = st.radio('Gender', ['Male', 'Female'])
 age = st.number_input("Enter your age:")
 hypertension = st.radio('Hypertension (high blood pressure)', ['Yes', 'No'])
