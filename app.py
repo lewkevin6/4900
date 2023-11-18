@@ -73,7 +73,7 @@ def predict(gender, age, hypertension, heart_disease, married, work_type, reside
     prediction = pipeline.predict_proba(user_input).any()
 
     if(flag is True):
-        if(prediction >= 0.7):
+        if(prediction >= 0.7): #
             st.success("No Stroke")
         elif(prediction < 0.7):
             st.warning("Stroke")
