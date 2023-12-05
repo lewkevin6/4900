@@ -2,11 +2,14 @@ import streamlit as st
 import joblib
 import pandas as pd
 import numpy as np
+import tensorflow as tf
 
 #Loads the desired model/pipeline in for the app to use
 def load_pipeline():
     return joblib.load('version_4/app_probability_pipeline.pkl')
 
+def load_nn():
+    return tf.keras.models.load_model('version_5/NN.h5')
 
 def predict(gender, age, hypertension, heart_disease, married, work_type, residence_type, avg_glucose_level, bmi, smoking_status):
     
