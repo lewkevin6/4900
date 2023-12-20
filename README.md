@@ -44,6 +44,14 @@ This file was created to modify the previous pipeline created to support imblear
 
 data_cleaning_3_testing.ipynb was created because the imblearn library and the sklearn library didnt interact with eachother properly. This file was made to break down the pipeline to see what steps werent working and to test potential fixes for them. I experimented a lot in this file without the fear of messing up the original file that will ultimately produce the pipeline for the app.
 
+# version_4 file
 
+This is where I tried different models and hyper parameters. Long story short, the best resulting model from our 3 cross validated grid search using F1 score as its metric is the SVC. The file contains more information about its hyper parameters. The SMOTENC over sampling percentage was grid searched aswell.
+
+# version_5 file
+
+I experimented with creating a neural network for my app. I ended up keeping the model from version_4 because the SVN generalized better. Im sure I can fine tune this model even more to make it out perform the SVN, but for now, I will keep using the SVN from file 4.
+
+# Most up to date app conists of "version_4" file + app.py
 
 
