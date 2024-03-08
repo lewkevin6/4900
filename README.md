@@ -52,6 +52,6 @@ This is where I tried different models and hyper parameters. Long story short, t
 
 I experimented with creating a neural network for my app. I ended up keeping the model from version_4 because the SVN generalized better. Im sure I can fine tune this model even more to make it out perform the SVN, but for now, I will keep using the SVN from file 4.
 
-# Most up to date app conists of "version_4" file + app.py
+# Most up to date app consists of "version_4" file + app.py
 
 
