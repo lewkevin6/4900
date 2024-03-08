@@ -54,4 +54,5 @@ I experimented with creating a neural network for my app. I ended up keeping the
 
 # Most up to date app consists of "version_4" file + app.py
 
+![image](https://github.com/lewkevin6/Stroke-Predictor-Web-App/assets/112120323/49082c98-2ca2-40ba-a894-d3eca4a1cdec)
 
