@@ -24,7 +24,7 @@ This is the prototype of the project:
 
 data_cleaning_1.ipynb was made to create graphs to help me visualize the data. I performed the data cleaning steps listed below, and saved the new data into a CSV file. 
 
-What I did to the:
+What I did:
 - Drop N/A values
 - Drop "Other" in "Gender" column (only 1 instance)
 - Drop "ID" column (Used to identify specific patients not needed for the prediction)
